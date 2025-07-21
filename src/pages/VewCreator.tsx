@@ -38,7 +38,7 @@ function VewCreator() {
             <img width="270px" src={currentCreatorData.image_url} alt="" />
             <h3>{currentCreatorData.name}</h3>
             <h3>{currentCreatorData.description}</h3>
-            <a href={currentCreatorData.url}>View Channel</a>
+            <a href={currentCreatorData.url} target='blank'>View Channel</a>
         </div>
     )
 }
