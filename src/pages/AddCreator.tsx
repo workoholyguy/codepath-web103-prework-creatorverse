@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useActionState } from "react";
 import { supabase } from "../client";
 import { useFormStatus } from "react-dom";
-import { z } from "zod";
 
 async function addCreatorAction(
     prevState: { error?: string | null },
@@ -31,7 +30,7 @@ async function addCreatorAction(
     };
 }
 
-function AddCreator(props) {
+function AddCreator() {
     // const addNewCreator = async (event) => {
     //     await supabase
     //         .from("creators")
