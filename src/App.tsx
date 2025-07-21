@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import TestConnection from './misc/TestConnection'
 import CreatorCard from './components/CreatorCard'
-import { Route, useRoutes } from 'react-router'
+import { useRoutes } from 'react-router'
 import ShowCreators from './pages/ShowCreators'
 import Navbar from './components/Navbar'
 import Layout from './layouts/Layout'
@@ -16,11 +13,7 @@ import Home from './pages/Home'
 
 function App() {
   TestConnection()
-  // const [count, setCount] = useState(0)
-  // const [creatorCardData, setCreatorCardData] = useState("")
-  // const data = setCreatorCardData("Test")
 
-  // console.log(data);
   const routes = useRoutes([
     {
       path: '/*',

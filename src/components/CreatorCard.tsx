@@ -1,19 +1,26 @@
-import React from 'react'
 import { NavLink } from 'react-router'
 
-function CreatorCard(props) {
+type CreatorCardProps = {
+    id: number;
+    creatorName: string;
+    creatorDescription: string;
+    creatorChannelLink: string;
+    imageSource: string;
+};
+
+function CreatorCard({ id, creatorName, creatorDescription, creatorChannelLink, imageSource }: CreatorCardProps) {
     return (
         <div>
-            <img width="340px" src={props.imageSource} alt="Creator Image" />
-            <h3>Creator's Name: {props.creatorName}</h3>
-            <NavLink to={`/ViewCreator/` + props.id} className={({ isActive }) => isActive ? "active" : ""}>
+            <img width="340px" src={imageSource} alt="Creator Image" />
+            <h3>Creator's Name: {creatorName}</h3>
+            <NavLink to={`/ViewCreator/` + id} className={({ isActive }) => isActive ? "active" : ""}>
                 View Creator Details
             </NavLink>
-            <NavLink to={`/EditCreator/` + props.id} className={({ isActive }) => isActive ? "active" : ""}>
+            <NavLink to={`/EditCreator/` + id} className={({ isActive }) => isActive ? "active" : ""}>
                 Edit Creator Info
             </NavLink>
-            <p>Description: {props.creatorDescription}</p>
-            <a href={props.creatorChannelLink} target='blank'>Channel Link</a>
+            <p>Description: {creatorDescription}</p>
+            <a href={creatorChannelLink} target='blank'>Channel Link</a>
         </div>
     )
 }
