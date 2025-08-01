@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router'
+import '../App.css'
 
 type CreatorCardProps = {
     id: number;
@@ -10,7 +11,7 @@ type CreatorCardProps = {
 
 function CreatorCard({ id, creatorName, creatorDescription, creatorChannelLink, imageSource }: CreatorCardProps) {
     return (
-        <div>
+        <div className='creator-card-container'>
             <img width="340px" src={imageSource} alt="Creator Image" />
             <h3>Creator's Name: {creatorName}</h3>
             <NavLink to={`/ViewCreator/` + id} className={({ isActive }) => isActive ? "active" : ""}>

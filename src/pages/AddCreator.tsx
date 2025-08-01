@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useActionState } from "react";
 import { supabase } from "../client";
 import { useFormStatus } from "react-dom";
+import '../App.css'
+
 
 async function addCreatorAction(
     prevState: { error?: string | null },
@@ -10,23 +12,29 @@ async function addCreatorAction(
     const url = formData.get("url") as string;
     const description = formData.get("description") as string;
     const image_url = formData.get("image_url") as string;
+    const youtube = formData.get("youtube") as string;
+    const twitter = formData.get("twitter") as string;
+    const instagram = formData.get("instagram") as string;
     const { error } = await supabase.from("creators").insert({
         name,
         url: formData.get("url"),
         description: formData.get("description"),
         image_url: formData.get("image_url"),
+        youtube: formData.get("youtube"),
+        twitter: formData.get("twitter"),
+        instagram: formData.get("instagram"),
     });
 
     if (!name)
         return {
             error: "Name is required",
-            data: { name, url, description, image_url },
+            data: { name, url, description, image_url, youtube, twitter, instagram },
         };
 
     return {
         error: error?.message || null,
         success: error ? null : `${name} Added Succesfully`,
-        data: { name, url, description, image_url },
+        data: { name, url, description, image_url, youtube, twitter, instagram },
     };
 }
 
@@ -52,6 +60,9 @@ function AddCreator() {
             url: "",
             description: "",
             image_url: "",
+            youtube: "",
+            twitter: "",
+            instagram: "",
         },
     });
     const { pending } = useFormStatus();
@@ -83,6 +94,24 @@ function AddCreator() {
                     defaultValue={state.data.image_url}
                     type="url"
                     placeholder="Image Url"
+                />
+                <input
+                    name="youtube"
+                    defaultValue={state.data.youtube}
+                    type="url"
+                    placeholder="Youtube"
+                />
+                <input
+                    name="twitter"
+                    defaultValue={state.data.twitter}
+                    type="url"
+                    placeholder="Twitter"
+                />
+                <input
+                    name="instagram"
+                    defaultValue={state.data.instagram}
+                    type="url"
+                    placeholder="Instagram"
                 />
                 <button type="submit" disabled={pending}>
                     {isPending || pending ? "Adding..." : "Add Creator"}

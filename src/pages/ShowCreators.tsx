@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../client';
 import { data } from 'react-router';
 import { fetchAllCreators } from '../utils/fetchCreators';
+import '../App.css'
+
 
 function ShowCreators() {
 
@@ -17,28 +19,32 @@ function ShowCreators() {
     }, [])
 
     return (
-        <div>
+        <>
             <h2>Show Creators Page:</h2>
 
-            {
-                allCreatorsData ? (
-                    allCreatorsData.map((creator) => (
-                        <CreatorCard
-                            key={creator.id}
-                            id={creator.id}
-                            imageSource={creator.image_url}
-                            creatorName={creator.name}
-                            creatorDescription={creator.description}
-                            creatorChannelLink={creator.url}
-                        />))
-                ) : (
-                    <p>Loading...</p>
-                )
-            }
+            <div className='all-creators-container'>
+
+
+                {
+                    allCreatorsData ? (
+                        allCreatorsData.map((creator) => (
+                            <CreatorCard
+                                key={creator.id}
+                                id={creator.id}
+                                imageSource={creator.image_url}
+                                creatorName={creator.name}
+                                creatorDescription={creator.description}
+                                creatorChannelLink={creator.url}
+                            />))
+                    ) : (
+                        <p>Loading...</p>
+                    )
+                }
 
 
 
-        </div>
+            </div>
+        </>
     )
 }
 

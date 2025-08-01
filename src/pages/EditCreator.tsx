@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchAllCreators } from '../utils/fetchCreators'
 import { supabase } from "../client"
+import '../App.css'
+
 
 
 function EditCreator() {
@@ -14,9 +16,13 @@ function EditCreator() {
                 name: currentCreatorData.name,
                 url: currentCreatorData.url,
                 description: currentCreatorData.description,
-                image_url: currentCreatorData.image_url
+                image_url: currentCreatorData.image_url,
+                instagram: currentCreatorData.instagram,
+                twitter: currentCreatorData.twitter,
+                youtube: currentCreatorData.youtube,
+
             } : {
-                name: '', url: '', description: '', image_url: ''
+                name: '', url: '', description: '', image_url: '', instagram: '', twitter: '', youtube: ''
             }
     })
 
@@ -35,7 +41,10 @@ function EditCreator() {
             name: currentCreatorData.name,
             url: currentCreatorData.url,
             description: currentCreatorData.description,
-            image_url: currentCreatorData.image_url
+            image_url: currentCreatorData.image_url,
+            instagram: currentCreatorData.instagram,
+            twitter: currentCreatorData.twitter,
+            youtube: currentCreatorData.youtube,
         })
     }, [currentCreatorData])
 
@@ -60,12 +69,33 @@ function EditCreator() {
             url: formData.url,
             description: formData.description,
             image_url: formData.image_url,
+            instagram: formData.instagram,
+            twitter: formData.twitter,
+            youtube: formData.youtube,
         }).eq('id', Number(param_id));
 
         if (error) {
             console.error('Update failed:', error.message);
         } else {
             console.log('Update successful!');
+            window.location.href = `/ViewCreator/${param_id}`
+        }
+    }
+
+    const handleDelete = async () => {
+        const confirmDelete = window.confirm("Are you sureyou want to delete this creator ?")
+
+        if (!confirmDelete) return;
+
+        const { error } = await supabase.from('creators').delete().eq('id', Number(param_id))
+
+        if (error) {
+            console.error(
+                "Delete Failed:", error.message
+            )
+        } else {
+            console.log("Delete Successful!");
+            window.location.href = "/"
         }
     }
 
@@ -102,8 +132,32 @@ function EditCreator() {
                     type="url"
                     placeholder="Image Url"
                 />
+                <input
+                    name="instagram"
+                    value={formData.instagram}
+                    onChange={e => setFormData({ ...formData, instagram: e.target.value })}
+                    type="url"
+                    placeholder="Instagram"
+                />
+                <input
+                    name="twitter"
+                    value={formData.twitter}
+                    onChange={e => setFormData({ ...formData, twitter: e.target.value })}
+                    type="url"
+                    placeholder="Twitter"
+                />
+                <input
+                    name="youtube"
+                    value={formData.youtube}
+                    onChange={e => setFormData({ ...formData, youtube: e.target.value })}
+                    type="url"
+                    placeholder="Youtube"
+                />
                 <button type="submit">
                     Save Changes
+                </button>
+                <button type='button' onClick={handleDelete}>
+                    Delete Creator
                 </button>
             </form>
         </div>

@@ -1,5 +1,7 @@
 import React from 'react'
 import ShowCreators from './ShowCreators'
+import '../App.css'
+
 
 function Home() {
     return (
