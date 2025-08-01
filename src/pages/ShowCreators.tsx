@@ -18,9 +18,13 @@ function ShowCreators() {
         load()
     }, [])
 
+    useEffect(() => {
+        console.log(allCreatorsData);
+    }, [allCreatorsData])
+
     return (
         <>
-            <h2>Show Creators Page:</h2>
+            <h2>Meet Our Creators !</h2>
 
             <div className='all-creators-container'>
 
@@ -28,21 +32,21 @@ function ShowCreators() {
                 {
                     allCreatorsData ? (
                         allCreatorsData.map((creator) => (
-                            <CreatorCard
+                            < CreatorCard
                                 key={creator.id}
                                 id={creator.id}
                                 imageSource={creator.image_url}
                                 creatorName={creator.name}
                                 creatorDescription={creator.description}
                                 creatorChannelLink={creator.url}
+                                creatorInstagram={creator.instagram}
+                                creatorTwitter={creator.twitter}
+                                creatorYoutube={creator.youtube}
                             />))
                     ) : (
                         <p>Loading...</p>
                     )
                 }
-
-
-
             </div>
         </>
     )

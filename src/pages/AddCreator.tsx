@@ -2,6 +2,12 @@ import React, { useEffect, useState, useActionState } from "react";
 import { supabase } from "../client";
 import { useFormStatus } from "react-dom";
 import '../App.css'
+import { FaInstagram } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { FaCircleInfo } from "react-icons/fa6";
 
 
 async function addCreatorAction(
@@ -70,8 +76,8 @@ function AddCreator() {
     return (
         <div>
             {/* <Navbar /> */}
-            <h2>Add Creator:</h2>
-            <form action={formAction}>
+            <h2>Who do you wish to add today ?</h2>
+            <form action={formAction} className="new-creator-form">
                 <input
                     name="name"
                     defaultValue={state.data.name}

@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { fetchAllCreators } from '../utils/fetchCreators'
 import '../App.css'
+import { FaInstagram } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { FaCircleInfo } from "react-icons/fa6";
 
 
 function VewCreator() {
@@ -34,18 +40,24 @@ function VewCreator() {
     if (!currentCreatorData) return <p>Loading...</p>;
 
     return (
-        <div>
+        <div className='view-creator-page'>
             {/* <Navbar /> */}
-            <h2>View Creator</h2>
-            <h3>{param_id}</h3>
-            <img width="270px" src={currentCreatorData.image_url} alt="" />
-            <h3>{currentCreatorData.name}</h3>
-            <h3>{currentCreatorData.description}</h3>
-            <h3><a href={currentCreatorData.instagram}>IG</a></h3>
-            <h3><a href={currentCreatorData.twitter}>Twitter</a></h3>
-            <h3><a href={currentCreatorData.youtube}>Youtube</a></h3>
-            <a href={currentCreatorData.url} target='blank'>View Channel</a>
-            <a href={`/EditCreator/${param_id}`}>Edit Creator</a>
+            {/* <h2>View Creator</h2> */}
+            {/* <h3>{param_id}</h3> */}
+            <div className="name-edit">
+                <h3>{currentCreatorData.name}</h3>
+
+            </div>
+            <div className="view-creator-image-description">
+                <img width="270px" src={currentCreatorData.image_url} alt="" />
+                <h3>{currentCreatorData.description}</h3>
+            </div>
+            <h3><a href={currentCreatorData.instagram}><FaInstagram /></a></h3>
+            <h3><a href={currentCreatorData.twitter}><FaSquareXTwitter /></a></h3>
+            <h3><a href={currentCreatorData.youtube}><FaYoutube /></a></h3>
+            <a href={currentCreatorData.url} target='blank'><FaCircleInfo /></a>
+
+            <a href={`/EditCreator/${param_id}`}><FaEdit /></a>
         </div>
     )
 }
