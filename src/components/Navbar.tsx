@@ -3,14 +3,12 @@ import { NavLink } from 'react-router'
 import '../App.css'
 import GalaxyIcon from '../../public/galaxy.png'
 
-
-
 function Navbar() {
     return (
         <nav className='navbar'>
             <ul>
                 <NavLink to='/'>
-                    <img width='60px' src="../../public/galaxy.png" alt="logo" />
+                    <img width='60px' src={GalaxyIcon} alt="logo" />
                 </NavLink>
             </ul>
             <ul>
