@@ -74,51 +74,55 @@ function AddCreator() {
     const { pending } = useFormStatus();
 
     return (
-        <div>
+        <div className="add-creator-page container">
             {/* <Navbar /> */}
             <h2>Who do you wish to add today ?</h2>
-            <form action={formAction} className="new-creator-form">
-                <input
-                    name="name"
-                    defaultValue={state.data.name}
-                    type="text"
-                    placeholder="Name"
-                />
-                <input
-                    name="url"
-                    defaultValue={state.data.url}
-                    type="url"
-                    placeholder="Channel URL"
-                />
-                <textarea
-                    name="description"
-                    defaultValue={state.data.description}
-                    placeholder="Description"
-                />
-                <input
-                    name="image_url"
-                    defaultValue={state.data.image_url}
-                    type="url"
-                    placeholder="Image Url"
-                />
-                <input
-                    name="youtube"
-                    defaultValue={state.data.youtube}
-                    type="url"
-                    placeholder="Youtube"
-                />
-                <input
-                    name="twitter"
-                    defaultValue={state.data.twitter}
-                    type="url"
-                    placeholder="Twitter"
-                />
-                <input
-                    name="instagram"
-                    defaultValue={state.data.instagram}
-                    type="url"
-                    placeholder="Instagram"
-                />
+            <form action={formAction} className="new-creator-form form container" role="form" >
+                <fieldset>
+
+                    <input
+                        name="name"
+                        defaultValue={state.data.name}
+                        type="text"
+                        placeholder="Name"
+                    />
+                    <input
+                        name="url"
+                        defaultValue={state.data.url}
+                        type="url"
+                        placeholder="Channel URL"
+                    />
+                    <textarea
+                        name="description"
+                        defaultValue={state.data.description}
+                        placeholder="Description"
+                    />
+                    <input
+                        name="image_url"
+                        defaultValue={state.data.image_url}
+                        type="url"
+                        placeholder="Image Url"
+                    />
+                    <input
+                        name="youtube"
+                        defaultValue={state.data.youtube}
+                        type="url"
+                        placeholder="Youtube"
+                    />
+                    <input
+                        name="twitter"
+                        defaultValue={state.data.twitter}
+                        type="url"
+                        placeholder="Twitter"
+                    />
+                    <input
+                        name="instagram"
+                        defaultValue={state.data.instagram}
+                        type="url"
+                        placeholder="Instagram"
+                    />
+                </fieldset>
+
                 <button type="submit" disabled={pending}>
                     {isPending || pending ? "Adding..." : "Add Creator"}
                 </button>

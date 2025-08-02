@@ -6,7 +6,7 @@ import '../App.css'
 
 const Layout = () => {
     return (
-        <div className='layout-container'>
+        <div className='layout-container' data-theme="auto">
             <Navbar />
             <main>
                 <Outlet />

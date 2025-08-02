@@ -29,13 +29,13 @@ function CreatorCard({
     creatorYoutube,
 }: CreatorCardProps) {
     return (
-        <div className="creator-card-container">
+        <article className="creator-card-container">
             <Link to={`/ViewCreator/` + id}>
-                <img width="340px" src={imageSource} alt="Creator Image" />
+                <img width="320px" src={imageSource} alt="Creator Image" />
             </Link>
             <div className="creator-info">
                 <div className="creator-info-left">
-                    <h3>{creatorName}</h3>
+                    <h4>{creatorName}</h4>
                 </div>
                 <div className="creator-info-right">
                     <NavLink
@@ -52,6 +52,11 @@ function CreatorCard({
                     </NavLink>
                 </div>
             </div>
+
+            <p>Description: {creatorDescription}</p>
+            <a href={creatorChannelLink} target="blank">
+                Channel Link
+            </a>
             <div className="creator-card-socials">
                 <Link to={creatorInstagram}>
                     <FaInstagram />
@@ -63,11 +68,7 @@ function CreatorCard({
                     <FaYoutube />
                 </Link>
             </div>
-            <p>Description: {creatorDescription}</p>
-            <a href={creatorChannelLink} target="blank">
-                Channel Link
-            </a>
-        </div>
+        </article>
     );
 }
 

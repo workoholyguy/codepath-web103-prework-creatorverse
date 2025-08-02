@@ -7,15 +7,17 @@ import '../App.css'
 function Navbar() {
     return (
         <nav className='navbar'>
-            <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>
-                Home
-            </NavLink>
-            <NavLink to="/ShowCreators" className={({ isActive }) => isActive ? "active" : ""}>
-                ShowCreators
-            </NavLink>
-            <NavLink to="/AddCreator" className={({ isActive }) => isActive ? "active" : ""}>
-                AddCreator
-            </NavLink>
+            <ul>
+                <li><NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>
+                    Home
+                </NavLink></li>
+                <li><NavLink to="/ShowCreators" className={({ isActive }) => isActive ? "active" : ""}>
+                    ShowCreators
+                </NavLink></li>
+                <li><NavLink to="/AddCreator" className={({ isActive }) => isActive ? "active" : ""}>
+                    AddCreator
+                </NavLink></li>
+            </ul>
             {/* <NavLink to="/EditCreator" className={({ isActive }) => isActive ? "active" : ""}>
                     EditCreator
                 </NavLink>
