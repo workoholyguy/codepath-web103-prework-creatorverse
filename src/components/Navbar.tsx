@@ -1,6 +1,7 @@
 // import React from 'react'
 import { NavLink } from 'react-router'
 import '../App.css'
+import GalaxyIcon from '../../public/galaxy.png'
 
 
 
@@ -8,14 +9,19 @@ function Navbar() {
     return (
         <nav className='navbar'>
             <ul>
+                <NavLink to='/'>
+                    <img width='60px' src="../../public/galaxy.png" alt="logo" />
+                </NavLink>
+            </ul>
+            <ul>
                 <li><NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>
                     Home
                 </NavLink></li>
                 <li><NavLink to="/ShowCreators" className={({ isActive }) => isActive ? "active" : ""}>
-                    ShowCreators
+                    Show Creators
                 </NavLink></li>
                 <li><NavLink to="/AddCreator" className={({ isActive }) => isActive ? "active" : ""}>
-                    AddCreator
+                    Add Creator
                 </NavLink></li>
             </ul>
             {/* <NavLink to="/EditCreator" className={({ isActive }) => isActive ? "active" : ""}>
