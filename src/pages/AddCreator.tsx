@@ -5,9 +5,10 @@ import '../App.css'
 import { FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { FaCircleInfo } from "react-icons/fa6";
+import { id } from "zod/locales";
 
 
 async function addCreatorAction(
@@ -21,7 +22,7 @@ async function addCreatorAction(
     const youtube = formData.get("youtube") as string;
     const twitter = formData.get("twitter") as string;
     const instagram = formData.get("instagram") as string;
-    const { error } = await supabase.from("creators").insert({
+    const { data, error } = await supabase.from("creators").insert({
         name,
         url: formData.get("url"),
         description: formData.get("description"),
@@ -29,7 +30,7 @@ async function addCreatorAction(
         youtube: formData.get("youtube"),
         twitter: formData.get("twitter"),
         instagram: formData.get("instagram"),
-    });
+    }).select().single();
 
     if (!name)
         return {
@@ -40,11 +41,12 @@ async function addCreatorAction(
     return {
         error: error?.message || null,
         success: error ? null : `${name} Added Succesfully`,
-        data: { name, url, description, image_url, youtube, twitter, instagram },
+        data: data || { name, url, description, image_url, youtube, twitter, instagram },
     };
 }
 
 function AddCreator() {
+    const navigate = useNavigate()
     // const addNewCreator = async (event) => {
     //     await supabase
     //         .from("creators")
@@ -69,9 +71,17 @@ function AddCreator() {
             youtube: "",
             twitter: "",
             instagram: "",
+            id: undefined
         },
     });
     const { pending } = useFormStatus();
+
+    useEffect(() => {
+        if (state.success && state.data?.id) {
+            navigate(`/ViewCreator/${state.data.id}`) // Redirect after Success
+
+        }
+    }, [state.success, state.data?.id, navigate])
 
     return (
         <div className="add-creator-page container">

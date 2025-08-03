@@ -91,17 +91,18 @@ p {
   justify-content: center;
   align-items: center;
   justify-items: center;
-  margin: 0.2rem 1rem;
+  margin: 0.2rem 0.2rem;
   /* flex: 1 1 300px; Grow, shrink, basis */
   row-gap: 0rem;
   /* max-width: min-content; */
   border: var(--color-secondary) 2px solid;
   border-radius: 12px;
+  padding: 0.5rem;
 }
 
 .creator-card-container * {
   border-radius: 12px;
-  max-width: 320px;
+  max-width: 250px;
 }
 .creator-card-container h4 {
   /* font-size: x-large; */

@@ -31,7 +31,7 @@ function CreatorCard({
     return (
         <article className="creator-card-container">
             <Link to={`/ViewCreator/` + id}>
-                <img width="320px" src={imageSource} alt="Creator Image" />
+                <img width="250px" src={imageSource} alt="Creator Image" />
             </Link>
             <div className="creator-info">
                 <div className="creator-info-left">
