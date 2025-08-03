@@ -1,12 +1,10 @@
 import './App.css'
 import TestConnection from './misc/TestConnection'
-import CreatorCard from './components/CreatorCard'
 import { useRoutes } from 'react-router'
 import ShowCreators from './pages/ShowCreators'
-import Navbar from './components/Navbar'
 import Layout from './layouts/Layout'
 import AddCreator from './pages/AddCreator'
-import ViewCreator from './pages/VewCreator'
+import ViewCreator from './pages/ViewCreator'
 import EditCreator from './pages/EditCreator'
 import Home from './pages/Home'
 

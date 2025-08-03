@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { fetchAllCreators } from "../utils/fetchCreators";
 import { supabase } from "../client";
 import "../App.css";
 
 function EditCreator() {
     const { id: param_id } = useParams();
+    const navigate = useNavigate();
     const [allCreatorsData, setAllCreatorsData] = useState<any[] | null>(null);
     const [currentCreatorData, setCurrentCreatorData] = useState<any | null>(
         null
@@ -88,7 +89,7 @@ function EditCreator() {
             console.error("Update failed:", error.message);
         } else {
             console.log("Update successful!");
-            window.location.href = `/ViewCreator/${param_id}`;
+            navigate(`/viewcreator/${param_id}`);
         }
     };
 
@@ -108,7 +109,7 @@ function EditCreator() {
             console.error("Delete Failed:", error.message);
         } else {
             console.log("Delete Successful!");
-            window.location.href = "/";
+            navigate("/");
         }
     };
 

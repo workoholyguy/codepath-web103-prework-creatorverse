@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { fetchAllCreators } from "../utils/fetchCreators";
 import "../App.css";
 import { FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { FaEdit } from "react-icons/fa";
-import { FaCircleInfo } from "react-icons/fa6";
 import { supabase } from "../client";
 
-function VewCreator() {
+function ViewCreator() {
     const { id: param_id } = useParams();
+    const navigate = useNavigate();
     const [allCreatorsData, setAllCreatorsData] = useState<any[] | null>(null);
     const [currentCreatorData, setCurrentCreatorData] = useState<any | null>(
         null
@@ -56,7 +54,7 @@ function VewCreator() {
             console.error("Delete Failed:", error.message);
         } else {
             console.log("Delete Successful!");
-            window.location.href = "/";
+            navigate("/");
         }
     };
 
@@ -121,4 +119,4 @@ function VewCreator() {
     );
 }
 
-export default VewCreator;
+export default ViewCreator;
